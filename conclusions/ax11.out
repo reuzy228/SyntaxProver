@@ -1,0 +1,6 @@
+input: a|!a
+normalized input: !a>!a
+
+deduction theorem: Γ ⊢ !a>!a <=> Γ U {!a} ⊢ !a
+1. axiom: !a
+

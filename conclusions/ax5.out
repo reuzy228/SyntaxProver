@@ -1,0 +1,21 @@
+input: a*b>b
+normalized input: (a*b)>b
+
+deduction theorem: Γ ⊢ (a*b)>b <=> Γ U {a*b} ⊢ b
+1. axiom: A>(B>A)
+2. axiom: (!A>!B)>((!A>B)>A)
+3. axiom: (A>(B>C))>((A>B)>(A>C))
+4. mp(1,1): A>(B>(C>B))
+5. mp(3,1): A>((B>(C>D))>((B>C)>(B>D)))
+6. mp(4,3): (A>B)>(A>(C>B))
+7. mp(5,3): (A>(B>(C>D)))>(A>((B>C)>(B>D)))
+8. mp(2,6): (!A>!B)>(C>((!A>B)>A))
+9. mp(7,6): (A>(B>(C>D)))>((A>(B>C))>(A>(B>D)))
+10. mp(8,9): ((!A>!B)>(C>(!A>B)))>((!A>!B)>(C>A))
+11. mp(4,10): (!A>!B)>(B>A)
+12. mp(1,11): (A*B)>B
+change variables: (A*B)>B
+A -> a
+B -> b
+proved: (a*b)>b
+

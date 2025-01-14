@@ -1,0 +1,29 @@
+input: (a>b)>(a>((!(b>((a>(b>c))>((a>b)>(a>c))))>!a)>((!(b>((a>(b>c))>((a>b)>(a>c))))>a)>(b>((a>(b>c))>((a>b)>(a>c)))))))
+normalized input: (a>b)>(a>(((b*((a>(b>c))*((a>b)*(a*!c))))>!a)>(((b*((a>(b>c))*((a>b)*(a*!c))))>a)>(b>((a>(b>c))>((a>b)>(a>c)))))))
+
+deduction theorem: Γ ⊢ (a>b)>(a>(((b*((a>(b>c))*((a>b)*(a*!c))))>!a)>(((b*((a>(b>c))*((a>b)*(a*!c))))>a)>(b>((a>(b>c))>((a>b)>(a>c))))))) <=> Γ U {a>b} ⊢ a>(((b*((a>(b>c))*((a>b)*(a*!c))))>!a)>(((b*((a>(b>c))*((a>b)*(a*!c))))>a)>(b>((a>(b>c))>((a>b)>(a>c))))))
+deduction theorem: Γ ⊢ a>(((b*((a>(b>c))*((a>b)*(a*!c))))>!a)>(((b*((a>(b>c))*((a>b)*(a*!c))))>a)>(b>((a>(b>c))>((a>b)>(a>c)))))) <=> Γ U {a} ⊢ ((b*((a>(b>c))*((a>b)*(a*!c))))>!a)>(((b*((a>(b>c))*((a>b)*(a*!c))))>a)>(b>((a>(b>c))>((a>b)>(a>c)))))
+deduction theorem: Γ ⊢ ((b*((a>(b>c))*((a>b)*(a*!c))))>!a)>(((b*((a>(b>c))*((a>b)*(a*!c))))>a)>(b>((a>(b>c))>((a>b)>(a>c))))) <=> Γ U {(b*((a>(b>c))*((a>b)*(a*!c))))>!a} ⊢ ((b*((a>(b>c))*((a>b)*(a*!c))))>a)>(b>((a>(b>c))>((a>b)>(a>c))))
+deduction theorem: Γ ⊢ ((b*((a>(b>c))*((a>b)*(a*!c))))>a)>(b>((a>(b>c))>((a>b)>(a>c)))) <=> Γ U {(b*((a>(b>c))*((a>b)*(a*!c))))>a} ⊢ b>((a>(b>c))>((a>b)>(a>c)))
+deduction theorem: Γ ⊢ b>((a>(b>c))>((a>b)>(a>c))) <=> Γ U {b} ⊢ (a>(b>c))>((a>b)>(a>c))
+deduction theorem: Γ ⊢ (a>(b>c))>((a>b)>(a>c)) <=> Γ U {a>(b>c)} ⊢ (a>b)>(a>c)
+deduction theorem: Γ ⊢ (a>b)>(a>c) <=> Γ U {a>b} ⊢ a>c
+deduction theorem: Γ ⊢ a>c <=> Γ U {a} ⊢ c
+1. axiom: (A>(B>C))>((A>B)>(A>C))
+change variables: (A>(B>C))>((A>B)>(A>C))
+C -> c
+B -> b
+A -> a
+proved: (a>(b>c))>((a>b)>(a>c))
+
+новое выражение
+((a>b)>(a>(c>((a>b)>(a>c)))))
+input: ((a>b)>(a>(c>((a>b)>(a>c)))))
+normalized input: (a>b)>(a>(c>((a>b)>(a>c))))
+
+deduction theorem: Γ ⊢ (a>b)>(a>(c>((a>b)>(a>c)))) <=> Γ U {a>b} ⊢ a>(c>((a>b)>(a>c)))
+deduction theorem: Γ ⊢ a>(c>((a>b)>(a>c))) <=> Γ U {a} ⊢ c>((a>b)>(a>c))
+deduction theorem: Γ ⊢ c>((a>b)>(a>c)) <=> Γ U {c} ⊢ (a>b)>(a>c)
+deduction theorem: Γ ⊢ (a>b)>(a>c) <=> Γ U {a>b} ⊢ a>c
+deduction theorem: Γ ⊢ a>c <=> Γ U {a} ⊢ c
+1. axiom: c

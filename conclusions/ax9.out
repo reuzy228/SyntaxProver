@@ -1,0 +1,32 @@
+input: (a>c)>((b>c)>((a|b)>c))
+normalized input: (a>c)>((b>c)>((!a>b)>c))
+
+deduction theorem: Γ ⊢ (a>c)>((b>c)>((!a>b)>c)) <=> Γ U {a>c} ⊢ (b>c)>((!a>b)>c)
+deduction theorem: Γ ⊢ (b>c)>((!a>b)>c) <=> Γ U {b>c} ⊢ (!a>b)>c
+deduction theorem: Γ ⊢ (!a>b)>c <=> Γ U {!a>b} ⊢ c
+1. axiom: !a>b
+2. axiom: a>c
+3. axiom: A>(B>A)
+4. axiom: (!A>!B)>((!A>B)>A)
+5. axiom: (A>(B>C))>((A>B)>(A>C))
+6. axiom: b>c
+7. mp(3,3): A>(B>(C>B))
+8. mp(5,3): A>((B>(C>D))>((B>C)>(B>D)))
+9. mp(5,5): ((A>(B>C))>(A>B))>((A>(B>C))>(A>C))
+10. mp(7,5): (A>B)>(A>(C>B))
+11. mp(8,5): (A>(B>(C>D)))>(A>((B>C)>(B>D)))
+12. mp(7,18): (!A>!B)>(B>A)
+13. mp(7,9): (A>((B>A)>C))>(A>C)
+14. mp(4,10): (!A>!B)>(C>((!A>B)>A))
+15. mp(11,10): (A>(B>(C>D)))>((A>(B>C))>(A>(B>D)))
+16. mp(6,12): !c>!b
+17. mp(8,13): (A>B)>((C>A)>(C>B))
+18. mp(14,15): ((!A>!B)>(C>(!A>B)))>((!A>!B)>(C>A))
+19. mp(16,4): (!c>b)>c
+20. mp(1,12): !b>a
+21. mp(2,17): (A>a)>(A>c)
+22. mp(19,17): (A>(!c>b))>(A>c)
+23. mp(20,21): !b>c
+24. mp(12,22): (!b>c)>c
+25. mp(23,24): c
+

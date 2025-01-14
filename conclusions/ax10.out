@@ -1,0 +1,25 @@
+input: !a>(a>b)
+normalized input: !a>(a>b)
+
+deduction theorem: Γ ⊢ !a>(a>b) <=> Γ U {!a} ⊢ a>b
+deduction theorem: Γ ⊢ a>b <=> Γ U {a} ⊢ b
+1. axiom: A>(B>A)
+2. axiom: (A>(B>C))>((A>B)>(A>C))
+3. axiom: (!A>!B)>((!A>B)>A)
+4. mp(1,1): A>(B>(C>B))
+5. mp(2,1): A>((B>(C>D))>((B>C)>(B>D)))
+6. mp(4,2): (A>B)>(A>(C>B))
+7. mp(5,2): (A>(B>(C>D)))>(A>((B>C)>(B>D)))
+8. mp(3,6): (!A>!B)>(C>((!A>B)>A))
+9. mp(7,6): (A>(B>(C>D)))>((A>(B>C))>(A>(B>D)))
+10. mp(8,9): ((!A>!B)>(C>(!A>B)))>((!A>!B)>(C>A))
+11. mp(4,10): (!A>!B)>(B>A)
+12. mp(2,2): ((A>(B>C))>(A>B))>((A>(B>C))>(A>C))
+13. mp(11,1): A>((!B>!C)>(C>B))
+14. mp(4,12): (A>((B>A)>C))>(A>C)
+15. mp(13,14): !A>(A>B)
+change variables: !A>(A>B)
+B -> b
+A -> a
+proved: !a>(a>b)
+
